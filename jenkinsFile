@@ -1,60 +1,32 @@
-// pipeline {
-//     agent any
-//     environment {
-//         CI = 'true' 
-//     }
-//     stages {
-//         stage('Setup NODE Environment') {
-//               steps {
-//                 sh '''#!/bin/bash +x
-//                   set -o errexit
-
-//                   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-//                   source ~/.nvm/nvm.sh
-//                   nvm install 8.0.0
-
-//                 '''
-//               }
-//             }
-//         stage('Build') {
-//             steps {
-//                 sh 'PATH=/usr/local/bin'
-//                 sh 'npm install'
-//             }
-//         }
-//         stage('Testing'){
-//         steps {
-//             echo 'hello world'
-//             // sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
-//             // sh "npm run test"
-//         }
-//     }
-// }}
 pipeline {
-  agent any
-    
-  tools {nodejs "node"}
-    
-  stages {
-        
-    stage('Git') {
-      steps {
-        git 'https://github.com/umair912/jenkinsPractice-01.git'
-      }
+    agent any
+    environment {
+        CI = 'true' 
     }
-     
-    stage('Build') {
-      steps {
-        sh 'npm install'
-        //  sh '<<Build Command>>'
-      }
-    }  
-    
-            
-    stage('Test') {
-      steps {
-        sh 'node test'
-      }
+    stages {
+        stage('Setup NODE Environment') {
+              steps {
+                sh '''#!/bin/bash +x
+                  set -o errexit
+
+                  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+                  source ~/.nvm/nvm.sh
+                  nvm install 8.0.0
+
+                '''
+              }
+            }
+        stage('Build') {
+            steps {
+                sh 'PATH=/usr/local/bin'
+                sh 'npm install'
+            }
+        }
+        stage('Testing'){
+        steps {
+            echo 'hello world'
+            // sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
+            // sh "npm run test"
+        }
     }
-  }
-}
+}}
