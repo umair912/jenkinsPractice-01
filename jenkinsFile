@@ -1,27 +1,49 @@
-pipeline{
+// pipeline{
 
-  agent any
+//   agent any
 
 
-  stages{
-    stage('Setup NODE Environment') {
-              steps {
-                sh '''#!/bin/bash +x
-                  set -o errexit
+//   stages{
+//     stage('Setup NODE Environment') {
+//               steps {
+//                 sh '''#!/bin/bash +x
+//                   set -o errexit
 
-                  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-                  source ~/.nvm/nvm.sh
-                  nvm install 8.0.0
+//                   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+//                   source ~/.nvm/nvm.sh
+//                   nvm install 8.0.0
 
-                '''
-              }
-            }
-    stage('Testing'){
-        steps {
-        sh 'npm config ls'
-        sh "npm install"
-        sh "npx cypress run --browser Chrome --spec Jenkins/cypress/e2e/Jenkin/jenkins.cy.js"
-      }
+//                 '''
+//               }
+//             }
+//     stage('Testing'){
+//         steps {
+//         sh 'npm config ls'
+//         sh "npm install"
+//         sh "npx cypress run --browser Chrome --spec Jenkins/cypress/e2e/Jenkin/jenkins.cy.js"
+//       }
+//     }
+//   }
+// }
+pipeline {
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
     }
-  }
-}
+    environment {
+        CI = 'true' 
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Testing'){
+        steps {
+        sh "npm run test"
+        }
+    }
+}}
