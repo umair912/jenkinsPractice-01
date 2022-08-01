@@ -6,7 +6,7 @@ pipeline{
   stages{
     stage('Setup NODE Environment') {
               steps {
-                sh '''/sbin:/usr/sbin:/usr/bin:/usr/local/bin
+                sh '''#!/bin/bash +x
                   set -o errexit
 
                   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
