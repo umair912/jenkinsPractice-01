@@ -18,7 +18,6 @@ pipeline{
             }
     stage('Testing'){
         steps {
-        export 'PATH=$PATH:/usr/local/bin'
         sh 'npm config ls'
         sh "npm install"
         sh "npx cypress run --browser Chrome --spec Jenkins/cypress/e2e/Jenkin/jenkins.cy.js"
