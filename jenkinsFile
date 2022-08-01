@@ -22,12 +22,9 @@ pipeline{
     stage('Testing'){
         steps {
         sh 'npm config ls'
-      }
-      steps{
-          sh "npm install"
-          sh "npx cypress run --browser Chrome --spec Jenkins/cypress/e2e/Jenkin/jenkins.cy.js"
+        sh "npm install"
+        sh "npx cypress run --browser Chrome --spec Jenkins/cypress/e2e/Jenkin/jenkins.cy.js"
       }
     }
   }
-  
 }
