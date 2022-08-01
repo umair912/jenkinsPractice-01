@@ -26,16 +26,23 @@
 //   }
 // }
 pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
+    agent any
     environment {
         CI = 'true' 
     }
     stages {
+        stage('Setup NODE Environment') {
+              steps {
+                sh '''#!/bin/bash +x
+                  set -o errexit
+
+                  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+                  source ~/.nvm/nvm.sh
+                  nvm install 8.0.0
+
+                '''
+              }
+            }
         stage('Build') {
             steps {
                 sh 'npm install'
