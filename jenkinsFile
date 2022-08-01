@@ -4,21 +4,20 @@ pipeline{
 
 
   stages{
-    stage('Setup NODE Environment') {
-              steps {
-                sh '''#!/bin/bash +x
-                  set -o errexit
+    // stage('Setup NODE Environment') {
+    //           steps {
+    //             sh '''/sbin:/usr/sbin:/usr/bin:/usr/local/bin
+    //               set -o errexit
 
-                  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-                  source ~/.nvm/nvm.sh
-                  nvm install
+    //               curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+    //               source ~/.nvm/nvm.sh
+    //               nvm install
 
-                '''
-              }
-            }
+    //             '''
+    //           }
+            // }
     stage('Testing'){
       steps{
-          sh "PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin"
           sh "npm install"
           sh "npx cypress run --browser Chrome --spec Jenkins/cypress/e2e/Jenkin/jenkins.cy.js"
       }
