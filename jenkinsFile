@@ -17,16 +17,11 @@ pipeline {
               }
             }
         stage('Build') {
-            steps {
-                sh 'PATH=/usr/local/bin'
-                sh 'npm install'
-            }
+            echo 'building an example for jenkins pipeline'
         }
-        stage('Testing'){
         steps {
-            echo 'hello world'
             // sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
             // sh "npm run test"
         }
     }
-}}
+}
