@@ -18,9 +18,10 @@ pipeline {
             }
         stage('ECHO COMMANDs') {
             steps {
-                echo 'dark world'
-                echo 'red world'
-                echo 'hello world'
+                echo 'Building..'
+                sh 'npm install'
+                echo 'Testing..'
+                sh 'npm test'
             }
         }
             // sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
