@@ -16,7 +16,7 @@
     "./state": "./src/exports/state.js"
   },
   "scripts": {
-    "test": "npm run test:unit && npm run test:component",
+    "test": "npm run test:unit  -- --reporter mochawesome && npm run test:component -- --reporter mochawesome",
     "test:unit": "mocha --timeout 10000 ./test/unit/",
     "test:component": "mocha --timeout 10000 ./test/component/",
     "coverage": "nyc --reporter=lcov --reporter=text npm run test",
