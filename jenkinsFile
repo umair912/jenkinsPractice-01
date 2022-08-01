@@ -16,9 +16,6 @@ pipeline{
                 '''
               }
             }
-    environment {
-        CI = 'true' 
-    }
     stage('Testing'){
         steps {
         sh 'npm config ls'
