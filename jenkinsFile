@@ -1,30 +1,3 @@
-// pipeline{
-
-//   agent any
-
-
-//   stages{
-//     stage('Setup NODE Environment') {
-//               steps {
-//                 sh '''#!/bin/bash +x
-//                   set -o errexit
-
-//                   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-//                   source ~/.nvm/nvm.sh
-//                   nvm install 8.0.0
-
-//                 '''
-//               }
-//             }
-//     stage('Testing'){
-//         steps {
-//         sh 'npm config ls'
-//         sh "npm install"
-//         sh "npx cypress run --browser Chrome --spec Jenkins/cypress/e2e/Jenkin/jenkins.cy.js"
-//       }
-//     }
-//   }
-// }
 pipeline {
     agent any
     environment {
@@ -43,16 +16,17 @@ pipeline {
                 '''
               }
             }
-        stage('Build') {
-            steps {
-                sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
-                sh 'npm install'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
+        //         sh 'npm install'
+        //     }
+        // }
         stage('Testing'){
         steps {
-            sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
-            sh "npm run test"
+            echo 'hello world'
+            // sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
+            // sh "npm run test"
         }
     }
 }}
