@@ -16,13 +16,14 @@ pipeline {
                 '''
               }
             }
-        steps{
-            echo 'building an example for jenkins pipeline'
+        stage('ECHO COMMANDs') {
+            steps {
+                echo 'dark world'
+                echo 'red world'
+                echo 'hello world'
+            }
         }
-        steps {
             // sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
-            echo 'hello world'
             // sh "npm run test"
-        }
     }
 }
