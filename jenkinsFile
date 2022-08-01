@@ -45,12 +45,14 @@ pipeline {
             }
         stage('Build') {
             steps {
+                sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
                 sh 'npm install'
             }
         }
         stage('Testing'){
         steps {
-        sh "npm run test"
+            sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
+            sh "npm run test"
         }
     }
 }}
