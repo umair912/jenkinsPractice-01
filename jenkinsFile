@@ -12,18 +12,11 @@ pipeline {
                   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
                   source ~/.nvm/nvm.sh
                   nvm install 8.0.0
-
+                  npm install
+                  npm run test
                 '''
               }
             }
-        stage('ECHO COMMANDs') {
-            steps {
-                echo 'Building..'
-                sh 'npm install'
-                echo 'Testing..'
-                sh 'npm test'
-            }
-        }
             // sh 'PATH=/sbin:/usr/sbin:/usr/bin:/usr/local/bin'
             // sh "npm run test"
     }
