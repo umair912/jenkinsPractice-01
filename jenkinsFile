@@ -3,9 +3,9 @@ pipeline {
   environment {
       CI = 'true' 
   }
-  triggers {
-      cron('H */4 * * 1-5')
-  }
+ // triggers {
+     // cron('H */4 * * 1-5')
+  // }
   stages {
     stage('Setup NODE Environment') {
       steps {
